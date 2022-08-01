@@ -75,7 +75,8 @@ if (menuLinks.length > 0) {
 
 menuBurger.addEventListener('click', function () {
 	menuBurger.classList.toggle('_active');
-	menuBody.classList.toggle('_active')
+	menuBody.classList.toggle('_active');
+	document.body.classList.toggle('_lock');
 })
 
 

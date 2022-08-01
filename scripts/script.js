@@ -89,11 +89,12 @@ window.addEventListener('scroll', function () {
 	}
 })
 
-arrow.addEventListener('click', function () {
+arrow.addEventListener('click', function (event) {
 	document.documentElement.scrollTo({
 		top: 0,
 		behavior: 'smooth'
 	})
+	event.preventDefault();
 })
 
 

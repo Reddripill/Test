@@ -202,7 +202,6 @@ if (priceInput.length > 0) {
 					progress.style.right = 100 - (priceMax - rangeInput[1].min) / (rangeInput[1].max - rangeInput[1].min) * 100 + '%';
 				}
 			}
-			event.preventDefault();
 		})
 	})
 }
@@ -223,7 +222,6 @@ if (rangeInput.length > 0) {
 				progress.style.left = (rangeMin - rangeInput[0].min) / (rangeInput[0].max - rangeInput[0].min) * 100 + '%';
 				progress.style.right = 100 - (rangeMax - rangeInput[1].min) / (rangeInput[1].max - rangeInput[1].min) * 100 + '%';
 			}
-			event.preventDefault();
 		})
 	})
 }

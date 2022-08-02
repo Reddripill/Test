@@ -179,4 +179,53 @@ document.addEventListener('pointerdown', function (event) {
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
 
+// range slider
+//-----------------------------------------------------------------------------------------------------------------------------------------
 
+const rangeInput = document.querySelectorAll('.range-slider__input input');
+const priceInput = document.querySelectorAll('.price-slider__item input');
+const progress = document.querySelector('.range-slider__progress');
+
+let rangeGap = 2000;
+
+if (priceInput.length > 0) {
+	priceInput.forEach(input => {
+		input.addEventListener('input', function (event) {
+			let priceMin = parseInt(priceInput[0].value);
+			let priceMax = parseInt(priceInput[1].value);
+			if (priceMax - priceMin >= rangeGap && priceMin >= rangeInput[0].min && priceMax <= rangeInput[0].max) {
+				if (event.target.closest('.price-slider_min')) {
+					rangeInput[0].value = priceMin;
+					progress.style.left = (priceMin - rangeInput[0].min) / (rangeInput[0].max - rangeInput[0].min) * 100 + '%';
+				} else {
+					rangeInput[1].value = priceMax;
+					progress.style.right = 100 - (priceMax - rangeInput[1].min) / (rangeInput[1].max - rangeInput[1].min) * 100 + '%';
+				}
+			}
+			event.preventDefault();
+		})
+	})
+}
+if (rangeInput.length > 0) {
+	rangeInput.forEach(input => {
+		input.addEventListener('input', function (event) {
+			let rangeMin = parseInt(rangeInput[0].value);
+			let rangeMax = parseInt(rangeInput[1].value);
+			if (rangeMax - rangeMin < rangeGap) {
+				if (event.target.closest('.range-slider_min')) {
+					rangeInput[0].value = rangeMax - rangeGap;
+				} else {
+					rangeInput[1].value = rangeMin + rangeGap;
+				}
+			} else {
+				priceInput[0].value = rangeMin;
+				priceInput[1].value = rangeMax;
+				progress.style.left = (rangeMin - rangeInput[0].min) / (rangeInput[0].max - rangeInput[0].min) * 100 + '%';
+				progress.style.right = 100 - (rangeMax - rangeInput[1].min) / (rangeInput[1].max - rangeInput[1].min) * 100 + '%';
+			}
+			event.preventDefault();
+		})
+	})
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------

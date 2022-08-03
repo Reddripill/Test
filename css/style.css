@@ -594,6 +594,11 @@ body._lock {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  /* & input[type="number"]::-webkit-inner-spin-button,
+	& input[type="number"]::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	} */
   /* &_min {
 	}
 
@@ -605,11 +610,6 @@ body._lock {
   -webkit-appearance: none;
   width: 100%;
   margin-left: 5px;
-}
-
-.price-slider input[type="number"]::-webkit-inner-spin-button,
-.price-slider input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
 }
 
 .price-slider input[type="number"] {
@@ -645,5 +645,111 @@ body._lock {
 @media (max-width: 375px) {
   .range-slider__wrapper {
     max-width: 300px;
+  }
+}
+
+.invalid {
+  border: 1px solid red;
+}
+
+#error {
+  color: red;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: auto;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+
+.popup._active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup__body {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px 10px;
+}
+
+.popup__content {
+  max-width: 800px;
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
+}
+
+.popup__title {
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.popup__title p {
+  font-size: 22px;
+}
+
+.popup__close {
+  position: relative;
+}
+
+.popup__close::after, .popup__close::before {
+  content: '';
+  height: 2px;
+  width: 20px;
+  background-color: #333;
+  position: absolute;
+  top: 11px;
+  right: 0px;
+  cursor: pointer;
+}
+
+.popup__close::after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.popup__close::before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.popup__text {
+  line-height: 120%;
+  font-size: 16px;
+}
+
+@media (max-width: 680px) {
+  .popup__content {
+    padding: 10px;
+  }
+  .popup__title p {
+    font-size: 18px;
+  }
+  .popup__text {
+    line-height: 110%;
+    font-size: 14px;
   }
 }

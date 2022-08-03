@@ -83,10 +83,12 @@ menuBurger.addEventListener('click', function () {
 const arrow = document.querySelector('.arrow');
 
 window.addEventListener('scroll', function () {
-	if (window.pageYOffset >= document.documentElement.clientHeight) {
-		arrow.style.display = 'block';
-	} else {
-		arrow.style.display = 'none';
+	if (!document.body.classList.contains('_lock')) {
+		if (window.pageYOffset >= document.documentElement.clientHeight) {
+			arrow.style.display = 'block';
+		} else {
+			arrow.style.display = 'none';
+		}
 	}
 })
 
@@ -226,5 +228,64 @@ if (rangeInput.length > 0) {
 	})
 }
 
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+// Popup
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+const popupLinks = document.querySelectorAll('[data-popup]');
+if (popupLinks.length > 0) {
+	popupLinks.forEach(popupLink => {
+		popupLink.addEventListener('click', function (event) {
+			const popupBlock = document.getElementById(popupLink.dataset.popup)
+			openPopup(popupBlock);
+			event.preventDefault();
+		})
+	})
+}
+
+const popupCloseIcon = document.querySelectorAll('.popup__close');
+
+if (popupCloseIcon.length > 0) {
+	popupCloseIcon.forEach(item => {
+		item.addEventListener('click', function (event) {
+			event.target.closest('.popup').classList.remove('_active')
+			document.body.classList.remove('_lock');
+		})
+	})
+}
+
+
+function openPopup(popupBlock) {
+	if (popupBlock) {
+		popupBlock.classList.add('_active');
+		menuBody.classList.remove('_active');
+		menuBurger.classList.remove('_active');
+		bodyLock();
+		popupBlock.addEventListener('click', function (event) {
+			if (!event.target.closest('.popup__content')) {
+				closePopup(event.target.closest('.popup'))
+			}
+		})
+	}
+}
+
+function closePopup(popupBlock) {
+	popupBlock.classList.remove('_active')
+	bodyUnock()
+}
+
+function bodyLock() {
+	const paddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth;
+	document.body.classList.add('_lock');
+	document.body.paddingRight = paddingValue + 'px';
+}
+
+function bodyUnock() {
+	document.body.classList.remove('_lock');
+	document.body.paddingRight = '';
+}
 
 //-----------------------------------------------------------------------------------------------------------------------------------------

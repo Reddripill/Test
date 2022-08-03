@@ -1,5 +1,7 @@
 "use strict";
 
+const body = document.body;
+
 const isMobile = {
 	Android: function () {
 		return navigator.userAgent.match(/Android/i);
@@ -28,7 +30,7 @@ const isMobile = {
 
 
 if (isMobile.any()) {
-	document.body.classList.add('_touch');
+	body.classList.add('_touch');
 	const menuArrow = document.querySelectorAll('.menu__arrow');
 	if (menuArrow.length > 0) {
 		for (let index = 0; index < menuArrow.length; index++) {
@@ -43,7 +45,7 @@ if (isMobile.any()) {
 		}
 	}
 } else {
-	document.body.classList.add('_pc')
+	body.classList.add('_pc')
 }
 
 
@@ -63,8 +65,8 @@ if (menuLinks.length > 0) {
 		if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
 			if (menuBody.classList.contains('_active')) {
 				menuBody.classList.remove('_active');
-				document.body.classList.remove('_lock');
 				menuBurger.classList.remove('_active');
+				bodyUnlock();
 			}
 			const gotoBlock = document.querySelector(menuLink.dataset.goto);
 			let alwaysTop = window.pageYOffset + gotoBlock.getBoundingClientRect().top - document.querySelector('.header').offsetHeight;
@@ -88,15 +90,15 @@ menuBurger.addEventListener('click', function () {
 function openBurger() {
 	menuBurger.classList.add('_active');
 	menuBody.classList.add('_active');
-	document.body.classList.add('_lock');
 	arrow.style.display = 'none';
+	bodyLock();
 }
 
 function closeBurger() {
 	menuBurger.classList.remove('_active');
 	menuBody.classList.remove('_active');
-	document.body.classList.remove('_lock');
 	arrow.style.display = 'block';
+	bodyUnlock();
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
@@ -108,7 +110,7 @@ function closeBurger() {
 const arrow = document.querySelector('.arrow');
 
 window.addEventListener('scroll', function () {
-	if (!document.body.classList.contains('_lock')) {
+	if (!body.classList.contains('_lock')) {
 		if (window.pageYOffset >= document.documentElement.clientHeight) {
 			arrow.style.display = 'block';
 		} else {
@@ -278,7 +280,7 @@ if (popupCloseIcon.length > 0) {
 	popupCloseIcon.forEach(item => {
 		item.addEventListener('click', function (event) {
 			event.target.closest('.popup').classList.remove('_active')
-			document.body.classList.remove('_lock');
+			bodyUnlock();
 		})
 	})
 }
@@ -300,18 +302,18 @@ function openPopup(popupBlock) {
 
 function closePopup(popupBlock) {
 	popupBlock.classList.remove('_active')
-	bodyUnock()
+	bodyUnlock()
 }
 
 function bodyLock() {
 	const paddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth;
-	document.body.classList.add('_lock');
-	document.body.paddingRight = paddingValue + 'px';
+	body.classList.add('_lock');
+	body.paddingRight = paddingValue + 'px';
 }
 
-function bodyUnock() {
-	document.body.classList.remove('_lock');
-	document.body.paddingRight = '';
+function bodyUnlock() {
+	body.classList.remove('_lock');
+	body.paddingRight = '';
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------

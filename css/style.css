@@ -594,22 +594,18 @@ body._lock {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  /* & input[type="number"]::-webkit-inner-spin-button,
-	& input[type="number"]::-webkit-outer-spin-button {
-		-webkit-appearance: none;
-		margin: 0;
-	} */
-  /* &_min {
-	}
-
-	&_max {
-	} */
 }
 
 .price-slider input {
   -webkit-appearance: none;
   width: 100%;
   margin-left: 5px;
+}
+
+.price-slider input[type="number"]::-webkit-inner-spin-button,
+.price-slider input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .price-slider input[type="number"] {

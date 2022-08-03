@@ -509,12 +509,6 @@ body._lock {
   display: none;
 }
 
-@media (max-width: 425px) {
-  .tabs__link {
-    font-size: 14px;
-  }
-}
-
 .range-slider {
   max-width: 1200px;
   margin: 0 auto;

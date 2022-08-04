@@ -291,6 +291,7 @@ function openPopup(popupBlock) {
 		popupBlock.classList.add('_active');
 		menuBody.classList.remove('_active');
 		menuBurger.classList.remove('_active');
+		arrow.style.display = 'none';
 		bodyLock();
 		popupBlock.addEventListener('click', function (event) {
 			if (!event.target.closest('.popup__content')) {
@@ -301,8 +302,9 @@ function openPopup(popupBlock) {
 }
 
 function closePopup(popupBlock) {
-	popupBlock.classList.remove('_active')
-	bodyUnlock()
+	popupBlock.classList.remove('_active');
+	arrow.style.display = 'block';
+	bodyUnlock();
 }
 
 function bodyLock() {
@@ -317,3 +319,31 @@ function bodyUnlock() {
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
+
+// client sign
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+const clientButtons = document.querySelectorAll('.client-sign__button');
+
+if (clientButtons.length > 0) {
+	clientButtons.forEach(clientButton => {
+		clientButton.addEventListener('click', function (event) {
+			if (!event.target.classList.contains('_active')) {
+				removeClientActive();
+				event.target.classList.add('_active');
+				document.getElementById(event.target.dataset.clientButton).classList.add('_active');
+			}
+			event.preventDefault();
+		})
+	})
+	function removeClientActive() {
+		clientButtons.forEach(el => {
+			el.classList.remove('_active');
+			document.getElementById(el.dataset.clientButton).classList.remove('_active');
+		})
+	}
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+

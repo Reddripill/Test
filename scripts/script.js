@@ -320,11 +320,13 @@ function bodyUnlock() {
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
 
+
+
 // client sign
 //-----------------------------------------------------------------------------------------------------------------------------------------
 
 const clientButtons = document.querySelectorAll('.client-sign__button');
-const clientBtns = document.querySelectorAll('.client-sign__btn button');
+const clientBtns = document.querySelectorAll('.client-sign__btn input');
 
 if (clientButtons.length > 0) {
 	clientButtons.forEach(clientButton => {

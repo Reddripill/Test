@@ -324,6 +324,7 @@ function bodyUnlock() {
 //-----------------------------------------------------------------------------------------------------------------------------------------
 
 const clientButtons = document.querySelectorAll('.client-sign__button');
+const clientBtns = document.querySelectorAll('.client-sign__btn button');
 
 if (clientButtons.length > 0) {
 	clientButtons.forEach(clientButton => {
@@ -332,6 +333,13 @@ if (clientButtons.length > 0) {
 				removeClientActive();
 				event.target.classList.add('_active');
 				document.getElementById(event.target.dataset.clientButton).classList.add('_active');
+				clientBtns.forEach(btn => {
+					if (btn.classList.contains('_active')) {
+						btn.classList.remove('_active');
+					} else {
+						btn.classList.add('_active');
+					}
+				})
 			}
 			event.preventDefault();
 		})

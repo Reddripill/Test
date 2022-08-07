@@ -291,57 +291,79 @@
 							class="client-sign__button">Зарегистрироваться</button>
 					</div>
 				</div>
-				<div class="client-sign__container">
-					<div class="client-sign__page">
-						<div id="client-sign__item_signin" class="client-sign__item _active">
-							<div class="client-sign__main item-signin">
-								<div class="item-signin__inputs">
-									<input placeholder="Введите имя" class="_client-input" type="text">
-									<input placeholder="Введите дату рождения" class="_client-input" type="text">
-									<input placeholder="Введите почту" class="_client-input" type="email">
-									<input placeholder="Введите пароль" class="_client-input" type="password">
+				<div class="client-sign__basic">
+					<div class="client-sign__container">
+						<div class="client-sign__content">
+							<div id="client-sign__item_signin" class="client-sign__item _active">
+								<div class="client-sign__main item__signin">
+									<div class="item-signin__inputs">
+										<div class="item-signin__input">
+											<input placeholder="Введите имя" class="_client-input" type="text">
+										</div>
+										<div class="item-signin__input">
+											<input placeholder="Введите дату рождения" class="_client-input" type="text">
+										</div>
+										<div class="item-signin__input">
+											<input placeholder="Введите почту" class="_client-input" type="email">
+										</div>
+										<div class="item-signin__input">
+											<input placeholder="Введите пароль" class="_client-input" type="password">
+										</div>
+									</div>
 								</div>
 							</div>
-							<button class="item-signin__btn _btn">Войти</button>
-						</div>
-						<div id="client-sign__item_signup" class="client-sign__item">
-							<div class="client-sign__main item-signup">
-								<div class="item-signup__inputs">
-									<input class="_client-input" type="text" placeholder="Введите ваше имя">
-									<input class="_client-input" type="tel" placeholder="Введите номер телефона">
-									<input class="_client-input" type="password" placeholder="Введите пароль">
-									<input class="_client-input" type="text" placeholder="Введите дату рождения">
-								</div>
-								<div class="item-signup__range">
-									<div class="range-slider">
-										<div class="range-slider__wrapper">
-											<div class="range-slider__text">Выберите желаемую цену</div>
-											<div class="range-slider__slider">
-												<div class="range-slider__progress"></div>
-											</div>
-											<div class="range-slider__input">
-												<input type="range" class="range-slider_min" step="500" max="30000" min="5000"
-													value="10000">
-												<input type="range" class="range-slider_max" step="500" max="30000" min="5000"
-													value="25000">
-											</div>
-											<div class="range-slider__price price-slider">
-												<div class="price-slider__item">
-													<div class="price-slider__prop">От</div>
-													<input type="number" class="price-slider_min" value="5000">
-													<div class="price-slider__currency">₽</div>
+							<div id="client-sign__item_signup" class="client-sign__item">
+								<div class="client-sign__main item-signup">
+									<div class="item-signup__inputs">
+										<div class="item-signup__input">
+											<input class="_client-input" type="text" placeholder="Введите ваше имя">
+										</div>
+										<div class="item-signup__input">
+											<input class="_client-input" type="tel" placeholder="Введите номер телефона">
+										</div>
+										<div class="item-signup__input">
+											<input class="_client-input" type="password" placeholder="Введите пароль">
+										</div>
+										<div class="item-signup__input">
+											<input class="_client-input" type="text" placeholder="Введите дату рождения">
+										</div>
+									</div>
+									<div class="item-signup__range">
+										<div class="range-slider">
+											<div class="range-slider__wrapper">
+												<div class="range-slider__text">Выберите желаемую цену</div>
+												<div class="range-slider__slider">
+													<div class="range-slider__progress"></div>
 												</div>
-												<div class="price-slider__item">
-													<div class="price-slider__prop">До</div>
-													<input type="number" class="price-slider_max" value="30000">
-													<div class="price-slider__currency">₽</div>
+												<div class="range-slider__input">
+													<input type="range" class="range-slider_min" step="500" max="30000" min="5000"
+														value="10000">
+													<input type="range" class="range-slider_max" step="500" max="30000" min="5000"
+														value="25000">
+												</div>
+												<div class="range-slider__price price-slider">
+													<div class="price-slider__item">
+														<div class="price-slider__prop">От</div>
+														<input type="number" class="price-slider_min" value="5000">
+														<div class="price-slider__currency">₽</div>
+													</div>
+													<div class="price-slider__item">
+														<div class="price-slider__prop">До</div>
+														<input type="number" class="price-slider_max" value="30000">
+														<div class="price-slider__currency">₽</div>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<button class="item-signup__btn _btn">Зарегистрироваться</button>
+						</div>
+						<div class="client-sign__footer">
+							<div class="client-sign__btn">
+								<button class="_btn _active">Войти</button>
+								<button class="_btn">Зарегистрироваться</button>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -101,10 +101,6 @@ h6 {
   font-size: 16px;
 }
 
-._client-input:not(:last-child) {
-  margin-bottom: 30px;
-}
-
 ._client-input input::-webkit-input-placeholder {
   -webkit-appearance: none;
   color: rgba(210, 210, 210, 0.9);
@@ -676,11 +672,13 @@ body._lock {
 }
 
 .client-sign__body {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: auto 1fr;
-  -ms-grid-columns: 1fr;
-      grid-template: auto 1fr/ 1fr;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-color: #fff;
   border-radius: 15px;
   max-width: 800px;
@@ -725,8 +723,8 @@ body._lock {
           flex: 0 0 50%;
   font-size: 14px;
   cursor: pointer;
-  -webkit-transition: all 0.8s ease 0s;
-  transition: all 0.8s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
 }
 
 .client-sign__button._active {
@@ -734,13 +732,25 @@ body._lock {
   color: #fff;
 }
 
+.client-sign__basic {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .client-sign__container {
   max-width: 370px;
   margin: 0 auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  position: relative;
 }
 
-.client-sign__page {
-  height: 100%;
+.client-sign__content {
   position: relative;
 }
 
@@ -748,6 +758,7 @@ body._lock {
   position: absolute;
   left: 0;
   top: 0;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -757,9 +768,8 @@ body._lock {
           flex-direction: column;
   opacity: 0;
   visibility: hidden;
-  height: 100%;
-  -webkit-transition: all 0.8s ease 0s;
-  transition: all 0.8s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
 }
 
 .client-sign__item._active {
@@ -768,23 +778,42 @@ body._lock {
   visibility: visible;
 }
 
-.client-sign__main {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+.client-sign__footer {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+}
+
+.client-sign__btn {
+  position: relative;
+}
+
+.client-sign__btn button {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+
+.client-sign__btn button._active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+.item-signin__input:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.item-signup__input:not(:last-child) {
+  margin-bottom: 30px;
 }
 
 .item-signup__range {
   margin: 20px 0px 30px 0px;
   padding: 0 10px;
-}
-
-.item-signup__btn {
-  margin: 0px 0px 10px 0px;
-}
-
-.item-signin__btn {
-  margin: 0px 0px 10px 0px;
 }
 
 .range-slider__wrapper {

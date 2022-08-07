@@ -355,3 +355,24 @@ if (clientButtons.length > 0) {
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
 
+// Inputs
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+const inputEyes = document.querySelectorAll('.input-eye__item');
+
+inputEyes.forEach(inputEye => {
+	inputEye.addEventListener('click', function (event) {
+		let inputParent = event.target.closest('.input-eye__icon').previousElementSibling;
+		if (inputEye.classList.contains('input-eye__item_lock')) {
+			inputEye.style.display = 'none';
+			inputEye.nextElementSibling.style.display = 'block';
+			inputParent.type = 'text';
+		} else {
+			inputEye.style.display = 'none';
+			inputEye.previousElementSibling.style.display = 'block';
+			inputParent.type = 'password';
+		}
+	})
+})
+
+//-----------------------------------------------------------------------------------------------------------------------------------------

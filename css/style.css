@@ -136,6 +136,7 @@ h6 {
   -ms-flex-item-align: start;
       -ms-grid-row-align: start;
       align-self: start;
+  cursor: pointer;
 }
 
 ._btn:hover {
@@ -611,6 +612,10 @@ body._lock {
 }
 
 .popup__title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   margin-bottom: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -788,14 +793,14 @@ body._lock {
   position: relative;
 }
 
-.client-sign__btn button {
+.client-sign__btn input {
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all 0.5s ease 0s;
   transition: all 0.5s ease 0s;
 }
 
-.client-sign__btn button._active {
+.client-sign__btn input._active {
   position: absolute;
   top: 0;
   left: 0;
@@ -803,12 +808,54 @@ body._lock {
   visibility: visible;
 }
 
-.item-signin__input:not(:last-child) {
+.input-eye__input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.input-eye__input:not(:last-child) {
   margin-bottom: 30px;
 }
 
-.item-signup__input:not(:last-child) {
-  margin-bottom: 30px;
+.input-eye__icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+}
+
+.input-eye__body {
+  background-color: #d2d2d2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  padding: 0px 10px;
+}
+
+.input-eye__item {
+  cursor: pointer;
+  display: none;
+}
+
+.input-eye__item img {
+  height: 20px;
+  width: 20px;
+}
+
+.input-eye__item_unlock {
+  display: block;
 }
 
 .item-signup__range {

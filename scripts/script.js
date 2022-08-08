@@ -404,6 +404,7 @@ inputs.forEach(input => {
 				} else {
 					removeError(event);
 				}
+				break;
 			case 'date':
 				let valueDate = new Date(event.target.value);
 				let doneDate = new Date(valueDate.getFullYear() + 18, valueDate.getMonth(), valueDate.getDate());
@@ -413,6 +414,7 @@ inputs.forEach(input => {
 				} else {
 					removeError(event);
 				}
+				break;
 			case 'tel':
 				let elVal = event.target.value;
 				if (!telPattern.test(elVal) || elVal.length != 11) {
@@ -420,8 +422,6 @@ inputs.forEach(input => {
 				} else {
 					removeError(event);
 				}
-			default:
-
 				break;
 		}
 	})

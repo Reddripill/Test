@@ -1,6 +1,7 @@
 "use strict";
 
 const body = document.body;
+const inputs = document.querySelectorAll('input');
 
 const isMobile = {
 	Android: function () {
@@ -27,6 +28,10 @@ const isMobile = {
 			isMobile.Windows());
 	}
 };
+
+let div = document.createElement('div');
+div.textContent = 'Введены неверные данные';
+div.classList.add('_error__text');
 
 
 if (isMobile.any()) {
@@ -361,6 +366,9 @@ if (clientButtons.length > 0) {
 //-----------------------------------------------------------------------------------------------------------------------------------------
 
 const inputEyes = document.querySelectorAll('.input-eye__item');
+const inputElements = document.querySelectorAll('.input-eye__input input');
+let namePattern = /[а-яА-Я]/;
+let telPattern = /[0-9]+()/;
 
 inputEyes.forEach(inputEye => {
 	inputEye.addEventListener('click', function (event) {
@@ -376,5 +384,67 @@ inputEyes.forEach(inputEye => {
 		}
 	})
 })
+
+inputs.forEach(input => {
+	if (input.type == 'date') {
+		input.value = getTodayDate();
+	}
+	input.addEventListener('blur', function (event) {
+		switch (event.target.type) {
+			case 'email':
+				if (!event.target.value.includes('@')) {
+					addError(event);
+				} else {
+					removeError(event);
+				}
+				break;
+			case 'text':
+				if (!namePattern.test(event.target.value)) {
+					addError(event);
+				} else {
+					removeError(event);
+				}
+			case 'date':
+				let valueDate = new Date(event.target.value);
+				let doneDate = new Date(valueDate.getFullYear() + 18, valueDate.getMonth(), valueDate.getDate());
+				if (Date.now() - doneDate < 0) {
+					addError(event);
+					div.textContent = 'Регистрация с 18 лет';
+				} else {
+					removeError(event);
+				}
+			case 'tel':
+				let elVal = event.target.value;
+				if (!telPattern.test(elVal) || elVal.length != 11) {
+					addError(event);
+				} else {
+					removeError(event);
+				}
+			default:
+
+				break;
+		}
+	})
+})
+
+
+function addError(event) {
+	event.target.parentElement.append(div);
+	event.target.parentElement.classList.add('_error-input');
+	event.target.focus();
+}
+
+function removeError(event) {
+	div.remove()
+	event.target.parentElement.classList.remove('_error-input');
+}
+
+
+function getTodayDate() {
+	let currentDate = new Date();
+	let arrDate = ['0' + currentDate.getMonth(), '0' + currentDate.getDate()].map(item => item.slice(-2));
+	arrDate.unshift(currentDate.getFullYear())
+	return arrDate.join('-');
+}
 
 //-----------------------------------------------------------------------------------------------------------------------------------------

@@ -129,6 +129,18 @@ h6 {
   color: #333;
 }
 
+._error-input {
+  border: 1px solid red;
+}
+
+._error__text {
+  position: absolute;
+  right: 0;
+  top: -0.9375rem;
+  font-size: 0.75rem;
+  color: red;
+}
+
 body {
   font-size: 16px;
   color: #fff;
@@ -669,7 +681,7 @@ body._lock {
   height: 20px;
   width: 20px;
 }
-.input-eye__item_unlock {
+.input-eye__item_lock {
   display: block;
 }
 

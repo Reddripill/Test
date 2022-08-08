@@ -430,13 +430,13 @@ inputs.forEach(input => {
 
 function addError(event) {
 	event.target.parentElement.append(div);
-	event.target.parentElement.classList.add('_error-input');
+	event.target.classList.add('_error-input');
 	event.target.focus();
 }
 
 function removeError(event) {
 	div.remove()
-	event.target.parentElement.classList.remove('_error-input');
+	event.target.classList.remove('_error-input');
 }
 
 

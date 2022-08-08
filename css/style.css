@@ -759,26 +759,3 @@ body._lock {
 .price-slider__currency {
   color: #333;
 }
-
-.test {
-  margin: 100px 0px 100px 0px;
-}
-.test__container {
-  margin: 0 auto;
-  background-color: #fff;
-  max-width: 65.625rem;
-  min-height: 400px;
-  position: relative;
-}
-.test__block {
-  position: absolute;
-  right: 0;
-  width: 14.5714285714%;
-  padding-top: 22.9523809524%;
-  background-color: rgba(210, 210, 210, 0.9);
-  top: 50%;
-  transform: translate(50%, -50%);
-}
-.test__text {
-  font-size: 1.375rem;
-}

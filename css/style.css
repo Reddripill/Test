@@ -84,15 +84,6 @@ h6 {
   font-weight: inherit;
 }
 
-/* @function prc($pxOne, $pxTwo) {
-	$result: math.div($pxOne, $pxTwo) * 100%;
-	@return $result;
-}
-
-@function em($px) {
-	$result: math.div($px, 16) + em;
-	@return $result;
-} */
 .wrapper {
   min-height: 100%;
   padding: 0px 0px 1000px 0px;

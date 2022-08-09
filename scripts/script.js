@@ -3,6 +3,14 @@
 const body = document.body;
 const inputs = document.querySelectorAll('input');
 
+let cache = new Set([{
+	name: 'Nikita',
+	password: 'admin123',
+	birthday: '04.11.2003',
+	email: 'reddripillll@gmail.com',
+	price: '20000-30000'
+}])
+
 const isMobile = {
 	Android: function () {
 		return navigator.userAgent.match(/Android/i);
@@ -371,7 +379,7 @@ if (clientButtons.length > 0) {
 
 const inputEyes = document.querySelectorAll('.input-eye__item');
 const inputElements = document.querySelectorAll('.input-eye__input input');
-let namePattern = /[а-яА-Я]/;
+let namePattern = /[a-zA-Z]/;
 let telPattern = /[0-9]+()/;
 
 inputEyes.forEach(inputEye => {
@@ -432,6 +440,8 @@ inputs.forEach(input => {
 })
 
 const submitForm = document.forms.submit;
+const priceMin = document.querySelector('.range-slider_min');
+const priceMax = document.querySelector('.range-slider_max');
 
 submitForm.addEventListener('submit', function (event) {
 	event.preventDefault();
@@ -441,9 +451,7 @@ submitForm.addEventListener('submit', function (event) {
 			if (item.value == '' || item.classList.contains('_error-input')) {
 				submitForm.elements.in.parentElement.append(div2);
 			} else {
-				div2.remove();
-				alert('Форма отправлена');
-				clearInput(document.forms.signin);
+				sendForm(document.forms.signin);
 				break;
 			}
 		}
@@ -452,9 +460,7 @@ submitForm.addEventListener('submit', function (event) {
 			if (item.value == '' || item.classList.contains('_error-input')) {
 				submitForm.elements.up.parentElement.append(div2);
 			} else {
-				div2.remove();
-				alert('Форма отправлена');
-				clearInput(document.forms.signup);
+				sendForm(document.forms.signup);
 				break;
 			}
 		}
@@ -480,15 +486,48 @@ function getTodayDate() {
 	return arrDate.join('-');
 }
 
-function clearInput(elem) {
-	if (elem.tagName == 'FORM') {
-		for (const item of elem.elements) {
-			if (item.type == 'date') continue;
-			item.value = '';
+
+function sendForm(e) {
+	div2.remove();
+	if (document.forms.signin == e) {
+		let obj = getObjForm(e);
+		for (const client of cache.keys()) {
+			if (obj.name == client.name && obj.password == client.password) {
+				alert(`Добро пожаловать, ${client.name}`);
+				return;
+			}
 		}
+		alert('Вы не зарегистрированы');
 	} else {
-		elem.value = '';
+		let objSignup = {};
+		for (const val of e.elements) {
+			let type = val.type;
+			if (type == 'range') continue;
+			if (type == 'password') {
+				objSignup.password = val.value;
+			} else if (type == 'text') {
+				objSignup.name = val.value;
+			} else if (type == 'date') {
+				objSignup.birthday = val.value;
+			} else if (type == 'tel') {
+				objSignup.telephone = val.value;
+			}
+		}
+		objSignup.price = `${priceMin.value}-${priceMax.value}`;
+		cache.add(objSignup);
+		alert('Вы зарегистрировались');
 	}
+}
+
+function getObjForm(e) {
+	let values = {};
+	for (const input of e.elements) {
+		let { name, value } = input;
+		values[name] = value;
+		if (input.type == 'date') continue;
+		input.value = '';
+	}
+	return values;
 }
 
 

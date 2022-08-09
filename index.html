@@ -297,7 +297,7 @@
 						<div class="client-sign__content">
 							<div id="client-sign__item_signin" class="client-sign__item _active">
 								<div class="client-sign__main item__signin">
-									<form action="#" class="item-signin__form input-eye">
+									<form action="#" name="signin" class="item-signin__form input-eye">
 										<div class="input-eye__input">
 											<input placeholder="Введите имя" class="_client-input" type="text">
 										</div>
@@ -325,7 +325,7 @@
 							</div>
 							<div id="client-sign__item_signup" class="client-sign__item">
 								<div class="client-sign__main item-signup">
-									<form action="#" class="item-signup__form input-eyeinput-eye">
+									<form action="#" name="signup" class="item-signup__form input-eyeinput-eye">
 										<div class="input-eye__input">
 											<input pattern="[a-zA-Z]" class="_client-input" type="text" placeholder="Введите имя">
 										</div>
@@ -380,10 +380,14 @@
 								</div>
 							</div>
 						</div>
-						<form action="#" class="client-sign__footer">
+						<form action="#" class="client-sign__footer" name="submit">
 							<div class="client-sign__btn">
-								<input type="submit" value="Войти" class="_btn _active">
-								<input type="submit" value="Зарегистрироваться" class="_btn">
+								<div class="client-sign__submit _active">
+									<input type="submit" name="in" value="Войти" class="_btn ">
+								</div>
+								<div class="client-sign__submit">
+									<input type="submit" name="up" value="Зарегистрироваться" class="_btn">
+								</div>
 							</div>
 						</form>
 					</div>

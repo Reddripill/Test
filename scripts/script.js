@@ -33,6 +33,10 @@ let div = document.createElement('div');
 div.textContent = 'Введены неверные данные';
 div.classList.add('_error__text');
 
+let div2 = document.createElement('div');
+div2.textContent = 'Введены неверные данные';
+div2.classList.add('_error__text2');
+
 
 if (isMobile.any()) {
 	body.classList.add('_touch');
@@ -331,7 +335,7 @@ function bodyUnlock() {
 //-----------------------------------------------------------------------------------------------------------------------------------------
 
 const clientButtons = document.querySelectorAll('.client-sign__button');
-const clientBtns = document.querySelectorAll('.client-sign__btn input');
+const clientBtns = document.querySelectorAll('.client-sign__submit');
 
 if (clientButtons.length > 0) {
 	clientButtons.forEach(clientButton => {
@@ -427,6 +431,31 @@ inputs.forEach(input => {
 	})
 })
 
+const submitForm = document.forms.submit;
+
+submitForm.addEventListener('submit', function (event) {
+	let block = document.querySelector('.client-sign__item._active');
+	if (block.id == 'client-sign__item_signin') {
+		for (const item of document.forms.signin.elements) {
+			if (item.value == '' || item.classList.contains('_error-input')) {
+				submitForm.elements.in.parentElement.append(div2);
+				event.preventDefault();
+			} else {
+				div2.remove();
+			}
+		}
+	} else {
+		for (const item of document.forms.signup.elements) {
+			if (item.value == '') {
+				submitForm.elements.up.parentElement.append(div2);
+				event.preventDefault();
+			} else {
+				div2.remove();
+			}
+		}
+	}
+})
+
 
 function addError(event) {
 	event.target.parentElement.append(div);
@@ -438,7 +467,6 @@ function removeError(event) {
 	div.remove()
 	event.target.classList.remove('_error-input');
 }
-
 
 function getTodayDate() {
 	let currentDate = new Date();

@@ -141,6 +141,16 @@ h6 {
   color: red;
 }
 
+._error__text2 {
+  position: absolute;
+  width: 100%;
+  white-space: nowrap;
+  left: 0;
+  top: -1.25rem;
+  font-size: 0.75rem;
+  color: red;
+}
+
 body {
   font-size: 16px;
   color: #fff;
@@ -638,12 +648,13 @@ body._lock {
 .client-sign__btn {
   position: relative;
 }
-.client-sign__btn input {
+.client-sign__submit {
+  position: relative;
   opacity: 0;
   visibility: hidden;
   transition: all 0.5s ease 0s;
 }
-.client-sign__btn input._active {
+.client-sign__submit._active {
   position: absolute;
   top: 0;
   left: 0;

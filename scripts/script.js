@@ -434,23 +434,28 @@ inputs.forEach(input => {
 const submitForm = document.forms.submit;
 
 submitForm.addEventListener('submit', function (event) {
+	event.preventDefault();
 	let block = document.querySelector('.client-sign__item._active');
 	if (block.id == 'client-sign__item_signin') {
 		for (const item of document.forms.signin.elements) {
 			if (item.value == '' || item.classList.contains('_error-input')) {
 				submitForm.elements.in.parentElement.append(div2);
-				event.preventDefault();
 			} else {
 				div2.remove();
+				alert('Форма отправлена');
+				clearInput(document.forms.signin);
+				break;
 			}
 		}
 	} else {
 		for (const item of document.forms.signup.elements) {
 			if (item.value == '' || item.classList.contains('_error-input')) {
 				submitForm.elements.up.parentElement.append(div2);
-				event.preventDefault();
 			} else {
 				div2.remove();
+				alert('Форма отправлена');
+				clearInput(document.forms.signup);
+				break;
 			}
 		}
 	}
@@ -474,5 +479,17 @@ function getTodayDate() {
 	arrDate.unshift(currentDate.getFullYear())
 	return arrDate.join('-');
 }
+
+function clearInput(elem) {
+	if (elem.tagName == 'FORM') {
+		for (const item of elem.elements) {
+			if (item.type == 'date') continue;
+			item.value = '';
+		}
+	} else {
+		elem.value = '';
+	}
+}
+
 
 //-----------------------------------------------------------------------------------------------------------------------------------------

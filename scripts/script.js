@@ -446,7 +446,7 @@ submitForm.addEventListener('submit', function (event) {
 		}
 	} else {
 		for (const item of document.forms.signup.elements) {
-			if (item.value == '') {
+			if (item.value == '' || item.classList.contains('_error-input')) {
 				submitForm.elements.up.parentElement.append(div2);
 				event.preventDefault();
 			} else {

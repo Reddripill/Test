@@ -499,20 +499,8 @@ function sendForm(e) {
 		}
 		alert('Вы не зарегистрированы');
 	} else {
-		let objSignup = {};
-		for (const val of e.elements) {
-			let type = val.type;
-			if (type == 'range') continue;
-			if (type == 'password') {
-				objSignup.password = val.value;
-			} else if (type == 'text') {
-				objSignup.name = val.value;
-			} else if (type == 'date') {
-				objSignup.birthday = val.value;
-			} else if (type == 'tel') {
-				objSignup.telephone = val.value;
-			}
-		}
+		let formData = new FormData(e);
+		let objSignup = Object.fromEntries(formData.entries());
 		objSignup.price = `${priceMin.value}-${priceMax.value}`;
 		cache.add(objSignup);
 		alert('Вы зарегистрировались');
